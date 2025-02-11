@@ -26,6 +26,8 @@
             android:textSize="18sp"
             android:textColor="@color/white"/>
 
+
+
         <TextView
             android:id="@+id/dateTV"
             android:layout_width="match_parent"
@@ -44,6 +46,13 @@
             android:textSize="18sp"
             android:textColor="#E4D97B"/>
 
+        <ImageView
+            android:id="@+id/deleteBtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:src="@drawable/delete"
+            android:layout_gravity="center"/>
 
 
 

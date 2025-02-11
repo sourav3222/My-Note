@@ -6,13 +6,17 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.noteappapplication.databinding.ItemDesignBinding
 
-class NoteAdapter(var noteEdit: NoteEdit): ListAdapter<Note, NoteViewHolder>(comaparotor) {
+class NoteAdapter(var noteEdit: NoteEdit , var noteDelete: NoteDelete): ListAdapter<Note, NoteViewHolder>(comaparotor) {
 
     interface NoteEdit{
 
         fun onNoteEdit(note: Note)
 
     }
+    interface NoteDelete {
+        fun onNoteDelete(note: Note)
+    }
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
@@ -39,6 +43,13 @@ class NoteAdapter(var noteEdit: NoteEdit): ListAdapter<Note, NoteViewHolder>(com
             holder.itemView.setOnClickListener {_ ->
                noteEdit .onNoteEdit(it)
             }
+
+            holder.binding.deleteBtn.setOnClickListener { _ ->
+
+                noteDelete.onNoteDelete(it)
+
+            }
+
 
         }
     }

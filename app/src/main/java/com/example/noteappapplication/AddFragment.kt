@@ -19,6 +19,11 @@ class AddFragment : Fragment() {
     var showDate: String? = null
     var noteId = 0
 
+    companion object {
+
+        var Note_ID = "note_Id"
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,7 +72,7 @@ class AddFragment : Fragment() {
             val timeStr = showTime ?: "00:00"
             val dateStr = showDate ?: "00/00/0000"
 
-            val note = Note(title = titleStr, time = timeStr, date = dateStr)
+            val note = Note(title = titleStr,  time = timeStr, date = dateStr)
 
             if (noteId == 0){
                 NoteDatabase.getDB(requireContext()).getNoteDao().insertData(note)
