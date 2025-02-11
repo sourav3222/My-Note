@@ -37,6 +37,7 @@ class HomeFragment : Fragment(), NoteAdapter.NoteEdit, NoteAdapter.NoteDelete {
         binding.addBtn.setOnClickListener {
 
 
+
             findNavController().navigate(R.id.action_homeFragment_to_addFragment)
 
         }
@@ -59,10 +60,8 @@ class HomeFragment : Fragment(), NoteAdapter.NoteEdit, NoteAdapter.NoteDelete {
 
         val noteDao = NoteDatabase.getDB(requireContext()).getNoteDao()
 
-        // Delete the note in a background thread
         Thread {
             noteDao.deleteData(note)
-            // Refresh the notes list on the main thread
             requireActivity().runOnUiThread {
                 val updatedNotes = noteDao.getAllData()
                 (binding.recyclerView.adapter as NoteAdapter).submitList(updatedNotes)
